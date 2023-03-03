@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scanuvach</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css"/>
+</head>
+<body>
+<h1>Scanuvach</h1>
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+
+            <div th:replace="fragments/menu :: menu"/>
+
+            <div class="tab-content pt-3">
+                <div class="tab-pane active" id="tab1">
+                    <form action="#" th:action="@{/nmapPortsJob/trigger}" method="post" style="float: left">
+                        <button type="submit" class="btn btn-light">
+                            <img th:src="@{/img/play-button.png}" height="35px" width="35px"/> Запуск
+                        </button>
+                    </form>
+
+                    <form th:action="@{/nmapPortsJob/config}" method="get" style="float: left">
+                        <button type="submit" class="btn btn-light">
+                            <img th:src="@{/img/settings.png}" height="35px" width="35px"/> Конфігурація
+                        </button>
+                    </form>
+                    <table class="table table-striped" th:border="1px">
+                        <thead>
+                        <tr>
+                            <th> IP</th>
+                            <th> Статус</th>
+                            <th> Відкриті порти</th>
+                            <th> Закриті порти</th>
+                            <th> Оновлено</th>
+                            <th> Знайдено</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="host : ${hosts}">
+                            <td><span th:text="${host.ip}"> IP </span></td>
+                            <td><span th:text="${host.status}"> Статус хоста </span></td>
+                            <td><span th:text="${host.openPorts}"> Відкриті порти </span></td>
+                            <td><span th:text="${host.closedPorts}"> Закриті порти </span></td>
+                            <td><span th:text="${host.updated}"> Оновлено </span></td>
+                            <td><span th:text="${host.created}"> Знайдено </span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="tab-pane" id="tab2"></div>
+                <div class="tab-pane" id="tab3"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script th:href="@{../static/bootstrap.bundle.min.js}"/>
+</script>
+</html>

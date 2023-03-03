@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div th:fragment="menu">
+    <ul class="nav nav-tabs mt-5" id="myTabs">
+        <li class="nav-item">
+            <a th:href="@{/nmapPortsJob/results}" class="nav-link"
+               th:classappend="${#httpServletRequest.getRequestURI().startsWith('/nmapPortsJob') ? 'active' : ''}">Порти</a>
+        </li>
+        <li class="nav-item">
+            <a href="/grandstreams" class="nav-link">GrandStream</a>
+        </li>
+        <li class="nav-item">
+            <a href="/config" class="nav-link">Конфігурація</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
